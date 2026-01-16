@@ -28,3 +28,15 @@ services:
       - "8300:8300"
     environment:
       - PORT=8300
+      - ORDER_SERVICE_URL=http://order-service:8100
+      - USER_SERVICE_URL=http://user-service:8400
+  
+  user-service:
+    build:
+      context: ../user-service
+      dockerfile: Dockerfile
+    ports:
+      - "8400:8400"
+    environment:
+      - PORT=8400
+      - NODE_ENV=development
